@@ -20,7 +20,7 @@ public class PlaywrightTest extends TestBasePlaywright {
         try (Playwright playwright = Playwright.create()) {
             Browser browser = playwright.chromium().launch(
                     new BrowserType.LaunchOptions() // or firefox, webkit
-                            .setHeadless(false)
+                            .setHeadless(true)
                             .setSlowMo(2000)
                             .setChannel("chrome")
             );
