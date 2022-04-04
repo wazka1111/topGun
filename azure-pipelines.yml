@@ -7,8 +7,8 @@ trigger:
 - master
 
 pool:
-  name: Default
-  demands: sh
+  name: custom
+  demands: sbt
 
 steps:
 - task: Maven@3
