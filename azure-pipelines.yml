@@ -8,7 +8,7 @@ trigger:
 
 pool:
   name: Default
-  demands: build-agent02
+  demands: build-agent02-3
 
 steps:
 - task: DownloadSecureFile@1
