@@ -5,6 +5,7 @@ import configuration.yaml.model.BaseModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -44,13 +45,25 @@ public class YamlConfigControler {
                         .forEach(s-> {
                             System.setProperty(s.getKey().toString(), s.getValue().toString());
                             counter.getAndIncrement();
-                            logger.info("Loaded environment property: {} = {}", s.getKey().toString(), s.getValue().toString());
+                            logSensualData(s);
+
                         }));
 
         foundActiveEnvironment = true;
         logger.info("Loaded environment properties total: {}", counter);
 
         if (foundActiveEnvironment == false) loadDefaultEnvironment();
+    }
+
+    private void logSensualData(Map.Entry<String, Object> s) {
+        String[] sensualKeys = {"login","password"};
+        if(Arrays.stream(sensualKeys).anyMatch(s.getKey().toString()::contains))
+        {
+            logger.info("Loaded environment property: {} = {}", s.getKey().toString(), "************");
+        }
+        else{
+            logger.info("Loaded environment property: {} = {}", s.getKey().toString(), s.getValue().toString());
+        }
     }
 
     private void loadDefaultEnvironment() {
