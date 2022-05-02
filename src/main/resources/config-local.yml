@@ -1,25 +1,25 @@
 environment:
-  integrate:
-    url: http://INT-automationpractice.com/index.php
-    eTitle: My Store
+  cvp:
+    url: https://ui.cvp.core.umetrics.io
+    eTitle: Umetrics Studio - Sartorius
     login: BradBitt2222@o2.pl
     password: seleniumsii
     accountName: Brad Pitt
     active: false
-  test:
-    url: http://TEST-automationpractice.com/index.php
-    eTitle: My Store
+  prod:
+    url: https://ui.umetrics.studio
+    eTitle: Umetrics Studio - Sartorius
     login: AngelinaJolie2222@o2.pl
-    password: seleniumsii
+    password: seleniumsii333
     accountName: Angelina Jolie
-    active: false
+    active: true
   stag:
     url: https://ui.staging.umetrics.studio/
     eTitle: Umetrics Studio - Sartorius
     login: dariusz.hryciuk@sartorius.com
     password: Wazka1111!
     accountName: Dariusz Hryciuk
-    active: true
+    active: false
 
 postgres:
   host: 10.63.80.19:58392/matcherTest
