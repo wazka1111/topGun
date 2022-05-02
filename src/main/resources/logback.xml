@@ -9,12 +9,12 @@
         </layout>
     </appender>
 
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-<!--        <file>${DEV_HOME}/timeBasedlogFile_${bySecond}.log</file>   z timestamp-->
+<!--    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+&lt;!&ndash;        <file>${DEV_HOME}/timeBasedlogFile_${bySecond}.log</file>   z timestamp&ndash;&gt;
         <file>${DEV_HOME}/timeBasedlogFile.log</file>
-<!--        <append>true</append>-->
+&lt;!&ndash;        <append>true</append>&ndash;&gt;
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- daily rollover -->
+            &lt;!&ndash; daily rollover &ndash;&gt;
             <fileNamePattern>${DEV_HOME}/timeBasedlogFile.%d{yyyy-MM-dd-HH-mm}.zip</fileNamePattern>
             <maxHistory>3</maxHistory>
             <totalSizeCap>30KB</totalSizeCap>
@@ -23,13 +23,13 @@
         <encoder>
             <pattern>%relative [%thread] %-5level %logger{35} - %msg%n</pattern>
         </encoder>
-    </appender>
+    </appender>-->
     <logger name="com">
         <appender-ref ref="FILE"/>
     </logger>
 
     <root level="INFO">
-        <appender-ref ref="STDOUT"/>
+<!--        <appender-ref ref="STDOUT"/>-->
         <appender-ref ref="FILE"/>
     </root>
 </configuration>

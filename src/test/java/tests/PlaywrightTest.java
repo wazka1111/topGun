@@ -8,7 +8,6 @@ import com.microsoft.playwright.Playwright;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import static org.hamcrest.CoreMatchers.containsStringIgnoringCase;
 import static org.hamcrest.MatcherAssert.assertThat;
 

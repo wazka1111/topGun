@@ -9,7 +9,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package basePage;
 
@@ -30,4 +31,4 @@ public class PageFactory {
         logger.debug("Creating page object: {}", classToProxy.getSimpleName());
         return org.openqa.selenium.support.PageFactory.initElements(driver, classToProxy);
     }
-}
+}*/

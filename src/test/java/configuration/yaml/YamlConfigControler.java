@@ -68,7 +68,7 @@ public class YamlConfigControler {
 
     private void loadDefaultEnvironment() {
         logger.info("No environment was specified in config.yaml. Loading default properties for Test1");
-        Map<String, Object> environmentProperties = new YamlReader().getEnvConfig().getEnvironment().getTest().getProperties();
+        Map<String, Object> environmentProperties = new YamlReader().getEnvConfig().getEnvironment().getStag().getProperties();
         for (Map.Entry entry : environmentProperties.entrySet()) {
             System.setProperty(entry.getKey().toString(), entry.getValue().toString());
             logger.info("Loaded environment property: {} = {}", entry.getKey().toString(), entry.getValue().toString());

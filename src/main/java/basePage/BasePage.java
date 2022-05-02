@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 public  class BasePage {
     protected WebDriver driver;
     protected WebDriverWait webDriverWait;
-    protected static PageFactory pageFactory;
+    //protected static PageFactory pageFactory;
     protected WebElement element;
     private Logger logger = LoggerFactory.getLogger(BasePage.class);
     private EventFiringMouse eventFiringMouse;
@@ -21,7 +21,7 @@ public  class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.webDriverWait = new WebDriverWait(driver, 15);
-        this.pageFactory = new PageFactory(driver);
+        //this.pageFactory = new PageFactory(driver);
     }
 
    public BasePage() {
