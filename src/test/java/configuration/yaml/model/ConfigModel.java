@@ -4,8 +4,6 @@ import lombok.Data;
 
 @Data
 public class ConfigModel {
-
     private EnvironmentModel environment;
-    //private PostgresModel postgres;
-
+    private Browser browser;
 }

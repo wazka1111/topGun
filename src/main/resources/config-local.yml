@@ -14,14 +14,14 @@ environment:
     accountName: Dariusz Hryciuk
     active: false
   stag:
-    url: https://ui.staging.umetrics.studio/
+    url: https://staging.umetrics.studio/
     eTitle: Umetrics Studio - Sartorius
     login: dariusz.hryciuk@sartorius.com
     password: Wazka1111!
     accountName: Dariusz Hryciuk
     active: true
 
-#postgres:
-#  host: 10.63.80.19:58392/matcherTest
-#  user: jamlbot
-#  password: gECxQGjIyxGwaI9l+36gYuZNR/liJ0fIoOdixZcjAodD5uKBxGCSTDZPMHjWhv7vG2IevXAGaq5iDOnMljRbd4GC9OqFg/OaePo/noNO+D0cNmjNV5HuqST91e9wimorSotb254VbvmCCYDFoGgOv2TxsVv5N1EdIouEIF4f8ANZg7JH9/AaFBD+WkQKEJTe9SvY1AyAAO/dEBEr8eg+nsvGygeHp0s53GK+6bpatMLrfetSOIuSp+BHh50SI+5D5q6DfNWQ8JkwI+61Aqg+erC32Xt8DX05uhYbz5Q29rklCKf/BJ26bxskwvistvey/9DckSrQpRmBmE7FiyY7GQ==
+browser:
+  headless: false
+  slomo: 0
+  channel: chrome

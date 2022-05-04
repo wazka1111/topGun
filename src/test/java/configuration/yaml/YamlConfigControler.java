@@ -15,6 +15,15 @@ public class YamlConfigControler {
 
     public YamlConfigControler() {
         setSystemPropertiesFromYamlEnvironment();
+        setBrowserPropertiesFromYamlEnvironment();
+    }
+    private void setBrowserPropertiesFromYamlEnvironment(){
+        YamlReader yamlReader = new YamlReader();
+        Map<String, Object> browserConfig = yamlReader.getEnvConfig().getBrowser().getBrowserConfig();
+        for (Map.Entry entry : browserConfig.entrySet()) {
+            System.setProperty(entry.getKey().toString(), entry.getValue().toString());
+            logger.info("Loaded browser property: {} = {}", entry.getKey().toString(), entry.getValue().toString());
+        }
     }
 
     private void setSystemPropertiesFromYamlEnvironment() {
