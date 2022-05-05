@@ -27,20 +27,22 @@ public class TestBasePlaywright {
     @BeforeAll
     static void setUp() {
         controler = new YamlConfigControler();
-        playwrightInit = new PlaywrightInit();
-        page = playwrightInit.initPage();
-        playwrightInit.openURL();
-        basePage = new BasePage(page);
+
 
     }
 
     @BeforeEach
     void beforeEach() throws IOException {
-        logger.info("Driver initialized");
+        playwrightInit = new PlaywrightInit();
+        page = playwrightInit.initPage();
+        playwrightInit.openURL();
+        basePage = new BasePage(page);
+        logger.info("Playwright initialized");
     }
 
     @AfterEach
      void tearDown() {
+        playwrightInit.stopTracing();
         //page.close();
         playwrightInit.closePlaywright();
         logger.info("Playwright closed properly");
