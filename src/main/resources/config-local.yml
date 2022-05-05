@@ -22,6 +22,7 @@ environment:
     active: true
 
 browser:
-  headless: false
-  slomo: 0
-  channel: chrome
+  headless: false           # false, true
+  slomo: 500                # 2000
+  channel: chrome           #chrome, firefox, webkit
+  trace: false              # false, true

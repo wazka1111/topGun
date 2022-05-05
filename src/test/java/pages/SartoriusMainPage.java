@@ -18,7 +18,7 @@ public class SartoriusMainPage extends BasePage {
     }
 
     private Locator onboardingSkip = page.locator("#skip-onboarding");
-    private Locator logout = page.locator("#single-spa-application\\:\\@umetrics\\/studio-ui-header >> studio-header >> div >> ui-root-sartorius-ui-header >> ui-root-sartorius-ui-button:nth-child(5)");
+    private Locator logout = page.locator("#button-logout");
     private Locator accountName = page.locator("#button-user-name");
     private Locator projectsListRows = page.locator("ui-root-sartorius-ui-table-body ui-root-sartorius-ui-table-row");
     private Locator nameLabel = page.locator("ui-root-sartorius-ui-table-cell:has-text(\"Name\")").first();
@@ -44,9 +44,11 @@ public class SartoriusMainPage extends BasePage {
     public List<String> getProjectsList() {
         waitForElement(listOfProjectNames);
         List<String> existingProjects = new ArrayList<>();
-        for (int i = 0; i < countExistingProjects(); i++) {
+        int projectsCount = countExistingProjects();
+        logger.info("There are: " + projectsCount + " projects");
+        for (int i = 0; i < projectsCount; i++) {
             existingProjects.add(listOfProjectNames.allTextContents().get(i));
-            logger.info("Existing project list: "+ listOfProjectNames.allTextContents().get(i));
+            logger.info("Existing project: "+ listOfProjectNames.allTextContents().get(i));
         }
        return existingProjects;
     }
