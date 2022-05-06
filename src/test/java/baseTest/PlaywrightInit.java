@@ -55,6 +55,7 @@ public class PlaywrightInit {
 
     public void openURL() {
         page.navigate(System.getProperty("url"));
+
     }
 
     public Page getPage() {
@@ -86,5 +87,12 @@ public class PlaywrightInit {
                     .setPath(Paths.get("target/trace.zip")));
             logger.info("Trace.zip file created in target folder");
         }
+    }
+
+    public void listeners() {
+        page.onLoad(p -> System.out.println("Listener onLoad: Page loaded!"));
+        page.onClose(p -> System.out.println("Listener onClose: Page closed!"));
+        page.onDOMContentLoaded(p -> System.out.println("Listener onDOMContentLoaded: Page onDOMContentLoaded!"));
+        page.onRequest(p -> System.out.println("Listener onRequest: Page onRequest!"));
     }
 }
