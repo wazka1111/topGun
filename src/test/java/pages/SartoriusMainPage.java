@@ -23,10 +23,17 @@ public class SartoriusMainPage extends BasePage {
     private Locator projectsListRows = page.locator("ui-root-sartorius-ui-table-body ui-root-sartorius-ui-table-row");
     private Locator nameLabel = page.locator("ui-root-sartorius-ui-table-cell:has-text(\"Name\")").first();
     private Locator listOfProjectNames = page.locator("ui-root-sartorius-ui-table-cell:below(ui-root-sartorius-ui-table-cell:has-text(\"Name\"):nth-child(1))");  //relative locator.  All projects below Name label.
+    private Locator goToProjectsButton = page.locator("ui-root-sartorius-ui-button[data-testid='recent-projects-list-button']");  //relative locator.  All projects below Name label.
 
 
     public SartoriusMainPage skipOnboarding() {
         onboardingSkip.click();
+        return this;
+    }
+    public SartoriusMainPage goToProjectsSection() {
+        if (goToProjectsButton.isVisible()) {
+            goToProjectsButton.click();
+        }
         return this;
     }
 

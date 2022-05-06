@@ -120,6 +120,7 @@ public class PlaywrightTest extends TestBasePlaywright {
         //login, skipOnboarding and get accountUserName
         String accountUserName = sartoriusLoginPage.login()
                 .skipOnboarding()
+                .goToProjectsSection()
                 .getAccountName();
 
         assertThat("Wrong account name", accountUserName, containsStringIgnoringCase(System.getProperty("accountName")));

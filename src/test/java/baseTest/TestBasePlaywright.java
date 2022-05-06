@@ -27,8 +27,6 @@ public class TestBasePlaywright {
     @BeforeAll
     static void setUp() {
         controler = new YamlConfigControler();
-
-
     }
 
     @BeforeEach
