@@ -25,4 +25,4 @@ browser:
   headless: false           # false, true
   slomo: 500                # 2000
   channel: chrome           #chrome, firefox, webkit
-  trace: false              # false, true
+  trace: true              # false, true
