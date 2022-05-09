@@ -9,6 +9,7 @@ import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pages.SartoriusMainPage;
 
 
 public class Hooks extends BaseTest {
@@ -17,7 +18,6 @@ public class Hooks extends BaseTest {
     @BeforeAll
     public static void beforeAll() {    // Runs before all scenarios
         controler = new YamlConfigControler();
-
     }
 
     @Before(order = 1)                //executed before each single scenario
@@ -27,7 +27,6 @@ public class Hooks extends BaseTest {
 
     @Before(order = 2)                //executed before each single scenario
     public void initData(Scenario scenario) {
-        controler = new YamlConfigControler();
         playwrightInit = new PlaywrightInit();
         page = playwrightInit.initPage();
         playwrightInit.openURL();
@@ -37,14 +36,9 @@ public class Hooks extends BaseTest {
     }
 
 
-   /* @After(order=2)                              //executed after each single scenario
-    public void printStatus(Scenario scenario) {
-        logger.info("SCENARIO NAME =  " + scenario.getName() + ". STATUS = " + scenario.getStatus());
-    }*/
 
     @After                              //executed after each single scenario
     public void closePlaywright(Scenario scenario) {
-        sartoriusMainPage.logout();
         playwrightInit.stopTracing();
         //page.close();
         playwrightInit.closePlaywright();

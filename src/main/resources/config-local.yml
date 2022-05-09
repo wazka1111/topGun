@@ -23,6 +23,6 @@ environment:
 
 browser:
   headless: false           # false, true
-  slomo: 2000                # 2000
+  slomo: 500                # 2000
   channel: chrome           #chrome, firefox, webkit
   trace: false              # false, true
