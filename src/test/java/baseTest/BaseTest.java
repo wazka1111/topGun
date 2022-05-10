@@ -18,9 +18,11 @@ public class BaseTest {
     protected static PlaywrightInit playwrightInit;
     protected static Page page;
     public static BasePage basePage;
-    protected SartoriusLoginPage sartoriusLoginPage;
-    protected SartoriusMainPage  sartoriusMainPage;
+    public SartoriusLoginPage sartoriusLoginPage;
+    public SartoriusMainPage  sartoriusMainPage;
 
     public BaseTest() {
+        System.out.println("Constructor BaseTest");
     }
+
 }

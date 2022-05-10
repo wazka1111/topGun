@@ -23,6 +23,7 @@ public class SartoriusLoginPage extends BasePage{
         username.fill(System.getProperty("login"));
         password.fill(System.getProperty("password"));
         submitButton.click();
+        logger.info("User has been properly logged in to the application");
         return new SartoriusMainPage(page);
     }
 

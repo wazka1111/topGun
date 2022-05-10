@@ -4,6 +4,7 @@ package configuration.yaml;
 import configuration.yaml.model.BaseModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utils.banner.ReadBanner;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,8 +15,10 @@ public class YamlConfigControler {
     Logger logger = LoggerFactory.getLogger(YamlConfigControler.class);
 
     public YamlConfigControler() {
+        logger.info("\n\n" + ReadBanner.BANNER);
         setSystemPropertiesFromYamlEnvironment();
         setBrowserPropertiesFromYamlEnvironment();
+
     }
     private void setBrowserPropertiesFromYamlEnvironment(){
         YamlReader yamlReader = new YamlReader();

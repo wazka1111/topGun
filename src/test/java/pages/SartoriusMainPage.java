@@ -42,6 +42,7 @@ public class SartoriusMainPage extends BasePage {
     }
     public void logout() {
         logout.click();
+        logger.info("User has been properly logged out");
     }
 
     private int countExistingProjects() {
