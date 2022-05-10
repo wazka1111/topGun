@@ -7,8 +7,8 @@ trigger:
 - master
 
 pool:
-  name: Default
-  demands: agent.name -equals build-agent02
+  name: Azure Pipelines
+
 
 steps:
 - task: DownloadSecureFile@1
