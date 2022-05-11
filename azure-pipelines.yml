@@ -22,4 +22,4 @@ jobs:
           /usr/bin/java --version
           mvn -v
       condition: succeededOrFailed()
-      displayName: Run unit tests
+      displayName: Run tests
