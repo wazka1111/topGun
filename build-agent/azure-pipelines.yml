@@ -11,7 +11,7 @@ resources:
       ref: refs/heads/master
       
 jobs:
-  - job: First test
+  - job: First_test
     pool:
       name: Default
       demands: sh
