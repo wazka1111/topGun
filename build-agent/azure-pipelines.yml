@@ -2,11 +2,13 @@ trigger:
   branches:
     include:
       - '*'
+
 resources:
-  pipelines:
-    - pipeline: build-templates
-      source: build-templates
-      branch: master
+  repositories:
+    - repository: templates
+      type: git
+      name: Umetrics/build-templates
+      ref: refs/heads/master
       
 jobs:
   - job: First test
@@ -15,7 +17,7 @@ jobs:
       demands: sh
 
     steps:
-      - template: steps/in-agent.yaml
+      - template: steps/in-agent.yaml@templates
         parameters:
           command: |
             /usr/bin/java --version
