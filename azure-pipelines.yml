@@ -1,0 +1,25 @@
+pool:
+  name: Default
+  demands:
+  - sh
+  
+trigger:
+  branches:
+    include:
+      - '*'
+
+jobs:
+  - job: test
+  steps:
+    # Run unit tests
+    - template: steps/in-agent.yaml@templates
+      parameters:
+        command: |
+          /usr/bin/java --version
+          mvn -v
+          update-java-alternatives --jre-headless --set java-1.11.0-openjdk-amd64
+          JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+          /usr/bin/java --version
+          mvn -v
+      condition: succeededOrFailed()
+      displayName: Run tests
