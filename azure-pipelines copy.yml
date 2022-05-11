@@ -1,0 +1,44 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+pool:
+  name: Default
+  demands: build-agent02-3
+
+steps:
+- task: DownloadSecureFile@1
+  name: artifactorymavenm2
+  displayName: 'Download secure file'
+  inputs:
+    secureFile: 'm2-settings.xml-svctfsumeabuild-2021-02-16'
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '11'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'clean test'
+- script: |
+    echo Build docker image
+    mkdir secrets
+    cp $(helmcertpem.secureFilePath) secrets/helm.cert.pem
+    cp $(helmkeypem.secureFilePath) secrets/helm.key.pem
+    cp $(cacertpem.secureFilePath) secrets/ca.cert.pem
+    cp $(clientcertcer.secureFilePath) secrets/clientcert.cer
+    cp $(pipconf.secureFilePath) secrets/pip.conf
+    cp $(pypirc.secureFilePath) secrets/.pypirc
+    cp $(azureloginsh.secureFilePath) secrets/azure-login.sh
+    cp $(artifactorycredentials.secureFilePath) secrets/artifactory.credentials
+    cp $(npmrc.secureFilePath) secrets/.npmrc
+    cp $(artifactorymavenm2.secureFilePath) secrets/artifactory_maven_m2_settings.xml
+    docker build --pull --no-cache -t umetrics-core-build-agent:$(Version.MajorMinor) -f Dockerfile .
+  workingDirectory: build-agent
+  displayName: "Build docker image"
