@@ -7,20 +7,19 @@ trigger:
   branches:
     include:
       - '*'
-stages:
-  - stage: Tests
-    jobs:
-      - job: First test
-        steps:
-        # Run tests
-          - template: steps/in-agent.yaml@templates
-            parameters:
-              command: |
-                /usr/bin/java --version
-                mvn -v
-                update-java-alternatives --jre-headless --set java-1.11.0-openjdk-amd64
-                JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-                /usr/bin/java --version
-                mvn -v
-          condition: succeededOrFailed()
-          displayName: Run tests
+
+jobs:
+  - job: First test
+    steps:
+    # Run tests
+      - template: steps/in-agent.yaml@templates
+        parameters:
+          command: |
+            /usr/bin/java --version
+            mvn -v
+            update-java-alternatives --jre-headless --set java-1.11.0-openjdk-amd64
+            JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+            /usr/bin/java --version
+            mvn -v
+      condition: succeededOrFailed()
+      displayName: Run tests
