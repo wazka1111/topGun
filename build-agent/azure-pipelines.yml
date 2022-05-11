@@ -20,12 +20,12 @@ jobs:
       - template: steps/in-agent.yaml@templates
         parameters:
           command: |
-            echo "Current environment"
+            printf "Current environment"
             /usr/bin/java --version
             mvn -v
             update-java-alternatives --jre-headless --set java-1.11.0-openjdk-amd64
             JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-            echo "Updated alternatives"
+            printf "Updated alternatives"
             /usr/bin/java --version
             mvn -v
             mvn -f pom.xml clean test
