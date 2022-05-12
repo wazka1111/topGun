@@ -7,24 +7,33 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class SartoriusLoginPage extends BasePage{
+public class SartoriusLoginPage {
     private Logger logger = LoggerFactory.getLogger(SartoriusLoginPage.class);
+    private Page page;
+    private BasePage basePage;
 
-
-    public SartoriusLoginPage(Page page) {
-        super(page);
+    public SartoriusLoginPage() {
+        System.out.println("konstruktor Login Page");
+        basePage= new BasePage();
+        initLocators();
     }
 
-    private Locator username = page.locator("#username");
-    private Locator password = page.locator("#password");
-    private Locator submitButton = page.locator("#kc-login");
+    private Locator username;
+    private Locator password;
+    private Locator submitButton;
+
+    private void initLocators() {
+        username = page.locator("#username");
+        password = page.locator("#password");
+        submitButton = page.locator("#kc-login");
+    }
 
     public SartoriusMainPage login() {
         username.fill(System.getProperty("login"));
         password.fill(System.getProperty("password"));
         submitButton.click();
         logger.info("User has been properly logged in to the application");
-        return new SartoriusMainPage(page);
+        return new SartoriusMainPage();
     }
 
 }

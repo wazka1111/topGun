@@ -8,6 +8,6 @@ Feature: Studio - check existing projects
     And Authorized user has been logged out
 
     Examples:
-      | Params |
-      |        |
+      | Params                    |
+      | project=Sartorius_Project |
 

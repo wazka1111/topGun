@@ -4,5 +4,5 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(monochrome = true, features = {"src/test/java/Features"}, glue = {"StepsDefinitions"})
+@CucumberOptions(tags = "@project", monochrome = true, features = {"src/test/java/Features"}, glue = {"StepsDefinitions"})
 public class RunTest { }

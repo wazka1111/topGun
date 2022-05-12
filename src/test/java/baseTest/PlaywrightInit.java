@@ -9,9 +9,9 @@ import java.nio.file.Paths;
 public class PlaywrightInit {
     private static Logger logger = LoggerFactory.getLogger("PlaywrightInit.class");
     private Playwright playwright;
-    Browser browser;
-    BrowserType browserType;
-    BrowserContext context;
+    private Browser browser;
+    private BrowserType browserType;
+    private BrowserContext context;
     private Page page;
 
     public PlaywrightInit() {

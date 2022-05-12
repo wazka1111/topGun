@@ -1,3 +1,4 @@
+/*
 package baseTest;
 
 
@@ -47,3 +48,4 @@ public class TestBasePlaywright {
     }
 
 }
+*/

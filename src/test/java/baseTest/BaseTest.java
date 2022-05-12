@@ -14,12 +14,13 @@ public class BaseTest {
     private static Logger logger = LoggerFactory.getLogger("BaseTest.class");
     protected static TestContext context = TestContext.getInstance();
     protected static Gson parser = new Gson();
-    protected static YamlConfigControler controler;
     protected static PlaywrightInit playwrightInit;
-    protected static Page page;
+    protected  Page page;
     public static BasePage basePage;
-    public SartoriusLoginPage sartoriusLoginPage;
-    public SartoriusMainPage  sartoriusMainPage;
+    protected YamlConfigControler controler;
+    protected SartoriusLoginPage sartoriusLoginPage;
+    protected SartoriusMainPage sartoriusMainPage;
+
 
     public BaseTest() {
         System.out.println("Constructor BaseTest");
