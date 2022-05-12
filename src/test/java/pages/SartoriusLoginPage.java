@@ -1,3 +1,4 @@
+/*
 package pages;
 
 import basePage.BasePage;
@@ -36,4 +37,4 @@ public class SartoriusLoginPage {
         return new SartoriusMainPage();
     }
 
-}
+}*/

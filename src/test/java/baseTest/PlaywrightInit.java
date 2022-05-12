@@ -1,98 +1,31 @@
 package baseTest;
 
 import com.microsoft.playwright.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.nio.file.Paths;
 
 public class PlaywrightInit {
-    private static Logger logger = LoggerFactory.getLogger("PlaywrightInit.class");
-    private Playwright playwright;
-    private Browser browser;
-    private BrowserType browserType;
-    private BrowserContext context;
-    private Page page;
 
-    public PlaywrightInit() {
-    }
+    public Browser getBrowser(String browserName, BrowserType.LaunchOptions launchOptions) {
+        Playwright playwright = Playwright.create();
 
-    public Page initPage() {
-        this.playwright = Playwright.create();
-        if (Boolean.parseBoolean(System.getProperty("trace"))) {
-            return startTracing();
-        } else {
-            this.browser = getBrowserType();
-            this.page = browser.newPage();
-            return this.page;
+        BrowserType browserType = null;
+
+        if (browserName.equalsIgnoreCase("chrome")) {
+            browserType = playwright.chromium();
         }
-    }
-
-    private Browser getBrowserType() {
-
-        switch (System.getProperty("channel")) {
-            case "chrome":
-                return playwright.chromium().launch(
-                        setBrowserOptions(System.getProperty("channel"), Double.parseDouble(System.getProperty("slomo")), Boolean.parseBoolean(System.getProperty("headless"))));
-            case "firefox":
-                return playwright.firefox().launch(
-                        setBrowserOptions(System.getProperty("channel"), Double.parseDouble(System.getProperty("slomo")), Boolean.parseBoolean(System.getProperty("headless"))));
-            case "webkit":
-                return playwright.webkit().launch(
-                        setBrowserOptions(System.getProperty("channel"), Double.parseDouble(System.getProperty("slomo")), Boolean.parseBoolean(System.getProperty("headless"))));
-            default:
-                return playwright.chromium().launch(
-                        setBrowserOptions(System.getProperty("channel"), Double.parseDouble(System.getProperty("slomo")), Boolean.parseBoolean(System.getProperty("headless"))));
+        if (browserName.equalsIgnoreCase("firefox")) {
+            browserType = playwright.firefox();
         }
-    }
-
-    private BrowserType.LaunchOptions setBrowserOptions(String channel, double slomo, boolean headless) {
-        return new BrowserType.LaunchOptions()
-                .setHeadless(headless)
-                .setSlowMo(slomo)
-                .setChannel(channel);
-    }
-
-    public void openURL() {
-        page.navigate(System.getProperty("url"));
-
-    }
-
-    public Page getPage() {
-        return this.page;
-    }
-
-    public void closePlaywright() {
-        playwright.close();
-    }
-
-    public Page startTracing() {
-        //this.playwright = Playwright.create();
-        this.browser = getBrowserType();
-        context = browser.newContext();
-        context.tracing().start(new Tracing.StartOptions()
-                .setTitle("Title Dariusz")
-                .setSnapshots(true)
-                .setScreenshots(true)
-        );
-        this.page = context.newPage();
-        return this.page;
-
-    }
-
-    public void stopTracing() {
-        if (Boolean.parseBoolean(System.getProperty("trace")))
-        {
-            this.context.tracing().stop(new Tracing.StopOptions()
-                    .setPath(Paths.get("target/trace.zip")));
-            logger.info("Trace.zip file created in target folder");
+        if (browserName.equalsIgnoreCase("webkit")) {
+            browserType = playwright.webkit();
         }
+        return browserType.launch(launchOptions);
     }
 
-    public void listeners() {
-        page.onLoad(p -> System.out.println("Listener onLoad: Page loaded!"));
-        page.onClose(p -> System.out.println("Listener onClose: Page closed!"));
-        page.onDOMContentLoaded(p -> System.out.println("Listener onDOMContentLoaded: Page onDOMContentLoaded!"));
-        page.onRequest(p -> System.out.println("Listener onRequest: Page onRequest!"));
+    public BrowserContext getBrowserContext(Browser browser, Browser.NewContextOptions newContextOptions) {
+        return browser.newContext(newContextOptions);
+    }
+
+    public Page getPage(BrowserContext browserContext) {
+        return browserContext.newPage();
     }
 }

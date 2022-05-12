@@ -1,7 +1,7 @@
 package pages;
 
 
-import baseTest.KBaseTest;
+import baseTest.BaseTest;
 import com.microsoft.playwright.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.is;
 
 public class K_MainPage {
     private Logger logger = LoggerFactory.getLogger(K_MainPage.class);
-    Page page = KBaseTest.localPage;
+    Page page = BaseTest.localPage;
 
     String logout = "#button-logout";
     String accountName = "#button-user-name";

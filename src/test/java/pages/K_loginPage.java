@@ -1,11 +1,11 @@
 package pages;
 
 
-import baseTest.KBaseTest;
+import baseTest.BaseTest;
 import com.microsoft.playwright.Page;
 
 public class K_loginPage {
-    Page page = KBaseTest.localPage;
+    Page page = BaseTest.localPage;
 
 
     String username = "#username";

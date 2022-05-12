@@ -1,7 +1,7 @@
 package StepsDefinitions;
 
-import baseTest.KBaseTest;
-import baseTest.KFrameworkInitialize;
+import baseTest.BaseTest;
+import baseTest.FrameworkInitialize;
 import configuration.yaml.YamlConfigControler;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -15,17 +15,15 @@ public class Hooks {
 
     @Before(order = 1)                //executed before each single scenario
     public void initTitle(Scenario scenario) {
-        System.out.println("START. SCENARIO NAME = " + scenario.getName());
-        //before
         controler = new YamlConfigControler();
-        KBaseTest.localPage = new KFrameworkInitialize().initializePlaywright();
-        System.out.println(">>>>  Before 1");
+        BaseTest.localPage = new FrameworkInitialize().initializePlaywright();
+        logger.info("START. SCENARIO NAME = " + scenario.getName());
     }
 
     @After                              //executed after each single scenario
     public void closePlaywright(Scenario scenario) {
-        KBaseTest.localPage.close();
+        BaseTest.localPage.close();
         logger.info("Playwright closed properly");
-        logger.info("SCENARIO NAME =  " + scenario.getName() + ". STATUS = " + scenario.getStatus());
+        logger.info("STOP. SCENARIO NAME = " + scenario.getName() + ". STATUS = " + scenario.getStatus());
     }
 }
